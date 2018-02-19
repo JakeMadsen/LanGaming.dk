@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Include head.ejs -->
+    <% include .././partials_admin/head %>
+<title>Ltu Lan - Admin</title>
+</head>
+
+<body>
+    <!-- Header Navbar Start -->
+        <!-- Include header.ejs -->
+        <% include .././partials_admin/header %>
+    <!-- Header Navbar End -->
+
+    <!-- Content Area Start -->
+    <div id="mainArticleContainer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10">
+                    <div class="card">
+                        <div class="card-header">
+                            Registrer Elev
+                        </div>
+
+                        <div class="container">
+                            <div class="card-block">
+                                <!-- CHECK IN FORM GROUP -->
+
+                                <form role="form" onsubmit="return postStudentCheckIn();">
+                                    <div class="form-group row">
+                                        <label for="check_in_name" class="col-3 col-form-label">Fulde Navn:</label>
+                                        <div class="col-9">
+                                            <input class="form-control" type="text" id="check_in_name">
+                                        </div>
+                                    </div>
+
+                                    <div class="dropdown-divider"></div>
+
+                                    <div class="form-group row">
+                                        <label for="check_in_phone" class="col-3 col-form-label">Telefon Nr:</label>
+                                        <div class="col-9">
+                                            <input class="form-control" type="text" id="check_in_phone">
+                                        </div>
+                                    </div>
+
+                                    <div class="dropdown-divider"></div>
+
+                                    <div class="form-group row">
+                                        <label for="check_in_cpr" class="col-3 col-form-label">Cpr Nr:</label>
+                                        <div class="col-9">
+                                            <input class="form-control" type="text" id="check_in_cpr">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="dropdown-divider"></div>
+
+                                    <div class="form-group row">
+                                        <label for="check_in_message" class="col-3 col-form-label">Vigtig Besked: <br /> (kan være tom)</label>
+                                        <div class="col-9">
+                                            <input class="form-control" type="text" id="check_in_message">
+                                        </div>
+                                    </div>
+
+                                    <div class="dropdown-divider"></div>
+
+                                    <div class="form-group row">
+                                        <label for="check_in_email" class="col-3 col-form-label">Email:</label>
+                                        <div class="col-9">
+                                            <input class="form-control" type="email" id="check_in_email">
+                                        </div>
+                                    </div>
+
+                                    <div class="dropdown-divider"></div>
+
+                                    <div class="form-group row">
+                                        <label for="check_in_elevPlan" class="col-3 col-form-label">Uni Login Navn:</label>
+                                        <div class="col-9">
+                                            <input class="form-control" type="text" id="check_in_elevPlan">
+                                        </div>
+                                    </div>
+
+                                    <div class="dropdown-divider"></div>
+                                    
+                                    <div class="form-group row">
+                                        <label for="check_in_event" class="col-3 col-form-label">Event Dag:</label>
+                                        <div class="col-9">
+                                            <select size="0" class="form-control" id="check_in_event"  name="Event Dag">
+                                                <option value='<%= lan_info.event_id %>'><%= lan_info.event_name %> - <%= lan_date %></option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="dropdown-divider"></div>
+
+                                    <button class="btn btn-lg btn-primary btn-block" type="button" onclick="return postStudentCheckIn();">Registrer</button>
+                                </form>
+
+                            </div>
+                        </div>
+
+                        <div class="card-footer footer">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Content Area End -->
+
+    <!-- Footer Start-->
+        <!-- Include footer.ejs -->
+        <% include .././partials_admin/footer %>
+    <!-- Footer End-->
+</body>
+
+<!--include script.ejs-->
+<% include .././partials_admin/scripts %>
+
+
+
+</html>
+

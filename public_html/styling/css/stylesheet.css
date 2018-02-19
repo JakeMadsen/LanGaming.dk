@@ -1,0 +1,40 @@
+* {
+
+    font-family: Verdana, Geneva, sans-serif;
+
+}
+body {
+
+    background-color: rgb(227, 227, 227)
+
+}
+ #mainArticleContainer {
+
+    margin-top: 30px;
+}
+ .pushthirty {
+     margin-top:30px;
+ }
+ .containerColour {
+     background-color:rgba(207, 207, 207, 0.47);
+     width:auto;
+ }
+ .nyeProdukter {
+     width:auto;
+     height:auto;
+     border:groove;
+     margin-top:20px;
+ }
+ 
+.products {
+    border:groove;
+    margin-top:20px;
+}
+
+.form_spacing input{
+    margin-top: 10px;
+}
+
+.form_spacing button{
+    margin-top: 10px;
+}
