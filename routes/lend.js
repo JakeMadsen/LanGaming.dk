@@ -42,6 +42,7 @@ module.exports = function (server) {
             }
         })
     });
+
     server.post('/json/lend/type/new',function(req, res) {
         console.log("===== Route - Post New - Lend Type ===== ")
 
@@ -92,6 +93,26 @@ module.exports = function (server) {
         })
     });
 
+    server.post('/json/lend/type/delete',function(req, res) {
+        console.log("===== Route - Delete Lend Type===== ")
+
+        let lend_type_id = req.body.lend_type_id;
+
+        console.log("Lend type ID to be deleted - " + lend_type_id)
+
+        let sql_delete_lend_type = `DELETE FROM tb_lend_out_options WHERE lend_out_option_id = ${lend_type_id}`;
+        db_connection.query(sql_delete_lend_type, function (err, data) {
+            if (err){ 
+                console.log("Error was encountered:")
+
+                console.log(err) 
+            }else {
+                console.log("Lend type ID - " + lend_type_id + " Was deleted.")
+                res.send(data);
+            }
+        })
+    });
+
     server.post('/json/lend/new', (req, res, next) => { 
         console.log("===== Route - Post New Lend ===== ")
 
@@ -123,7 +144,7 @@ module.exports = function (server) {
     server.get('/json/lend/get',function(req, res) {
         console.log("===== Route - Get All - Lends ===== ")
 
-        let sql_get_lend = `SELECT lend_out_id, lend_out_student_name, lend_out_time, lend_out_option_name
+        let sql_get_lend = `SELECT lend_out_id, lend_out_student_name, lend_out_time, lend_out_option_name, fk_lend_out_options
                                 FROM
                                     (   tb_lend_out INNER JOIN tb_lend_out_options 
                                         ON fk_lend_out_options = lend_out_option_id )`;

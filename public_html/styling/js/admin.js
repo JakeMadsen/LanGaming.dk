@@ -224,3 +224,65 @@ function editLendType(){
                 });
     }
 }
+
+function deleteLendType(){
+    let confirmDelete = confirm("Er du sikker?"),
+        lend_type_id = document.querySelector('#delete_lend_type').value;
+
+    if (confirmDelete == true) {
+        checkIfLendTypeIsInUse(lend_type_id, function(checkIfInUse){
+            console.log("Check returned - " + checkIfInUse)
+
+            if(checkIfInUse == true){
+                alert("Du kan ikke slette en type som er i brug.")
+            }
+            else{
+                let headers = new Headers();
+                    headers.append('Content-Type', 'application/json');
+                
+                let init = {
+                        method: 'POST',
+                        headers: headers,
+                        body: `{
+                            "lend_type_id":"${lend_type_id}"}`,
+                        cache: 'no-cache',
+                        mode: 'cors'
+                    };
+                let request = new Request('http://localhost:3030/json/lend/type/delete', init);
+                            
+                fetch(request)
+                    .then(response => 
+                        {
+                            console.log("Succes",response)
+                            window.location=('http://localhost:3030/cPanel/lend');
+                        })
+                    .catch(err => 
+                        {   
+                            console.log("Fejlbesked",err, request)
+                        });
+            }
+        });        
+    }   
+}
+
+function checkIfLendTypeIsInUse(lend_type_id, deleteFunc ){
+    let check = false;
+    fetch('http://localhost:3030/json/lend/get')
+        .then(function (data) 
+        {
+            return data.json();
+        })
+        .then(function (all_lends) {
+            all_lends.forEach(function (element) {
+                console.log("To be checked: " + lend_type_id)
+                console.log("Check: " + element.fk_lend_out_options)
+                if(lend_type_id == element.fk_lend_out_options){
+                    console.log("Der var et match")
+                    check = true;
+                }
+            });
+            
+            deleteFunc(check)
+        })
+        
+}
