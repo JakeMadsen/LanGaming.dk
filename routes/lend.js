@@ -3,7 +3,7 @@ const moment = require('moment');
 
 module.exports = function (server) {
     
-    server.get('/cPanel/kabler', function(req, res) {
+    server.get('/cPanel/lend', function(req, res) {
         let sql_get_lend = `SELECT lend_out_id, lend_out_student_name, lend_out_time, lend_out_option_name
                                 FROM
                                 (   tb_lend_out INNER JOIN tb_lend_out_options 
@@ -18,17 +18,17 @@ module.exports = function (server) {
             });
 
             if(err){
-                res.render('pages/cPanel/pages_admin/cables')
+                res.render('pages/cPanel/pages_admin/lend')
             }else {
-                res.render('pages/cPanel/pages_admin/cables', {
+                res.render('pages/cPanel/pages_admin/lend', {
                     lend_out: data
                 });
             }
         })        
     });
 
-    server.get('/json/cable/types',function(req, res) {
-        console.log("===== Route - Cable Types ===== ")
+    server.get('/json/lend/type/all',function(req, res) {
+        console.log("===== Route - Get all - Lend Types ===== ")
 
         let sql_get_cables = `SELECT * FROM tb_lend_out_options`;
         db_connection.query(sql_get_cables, function (err, data) {
@@ -42,9 +42,58 @@ module.exports = function (server) {
             }
         })
     });
+    server.post('/json/lend/type/new',function(req, res) {
+        console.log("===== Route - Post New - Lend Type ===== ")
 
-    server.post('/json/cable/lend', (req, res, next) => { 
-        console.log("===== Route - Cable Lend ===== ")
+        let new_lend_type_name = req.body.new_lend_name;
+
+        let sql_new_lend_type = `INSERT INTO tb_lend_out_options
+                                    SET lend_out_option_name = '${new_lend_type_name}'`;
+
+        console.log(new_lend_type_name)
+        
+        db_connection.query(sql_new_lend_type, function (err, data) {
+            if (err) {
+                console.log("Error was encountered:")
+                console.log(err);
+                res.json(400, err.message = 'validering fejlede' );
+            }
+            else {
+                console.log("Lend Out Information was added:")
+                console.log(data)
+                res.json(200, data);
+            }
+        })
+    });
+
+    server.put('/json/lend/type/edit',function(req, res) {
+        console.log("===== Route - Put Edit - Lend Type ===== ")
+
+        let lend_type_id        = req.body.lend_type_id,
+            new_lend_type_name  = req.body.new_lend_name;
+
+        let sql_edit_lend_type = `UPDATE tb_lend_out_options
+                                    SET lend_out_option_name = '${new_lend_type_name}'
+                                    WHERE lend_out_option_id = '${lend_type_id}'`;
+
+        console.log(lend_type_id, new_lend_type_name)
+        
+        db_connection.query(sql_edit_lend_type, function (err, data) {
+            if (err) {
+                console.log("Error was encountered:")
+                console.log(err);
+                res.json(400, err.message = 'validering fejlede' );
+            }
+            else {
+                console.log("Lend out - " + lend_type_id + " Was edited.")
+                console.log(data)
+                res.json(200, data);
+            }
+        })
+    });
+
+    server.post('/json/lend/new', (req, res, next) => { 
+        console.log("===== Route - Post New Lend ===== ")
 
         let cable_id = req.body.cable,
             student_name = req.body.student
@@ -71,8 +120,8 @@ module.exports = function (server) {
 
     });
 
-    server.get('/json/cable/lend/out',function(req, res) {
-        console.log("===== Route - Cable Lend Out ===== ")
+    server.get('/json/lend/get',function(req, res) {
+        console.log("===== Route - Get All - Lends ===== ")
 
         let sql_get_lend = `SELECT lend_out_id, lend_out_student_name, lend_out_time, lend_out_option_name
                                 FROM
@@ -89,8 +138,8 @@ module.exports = function (server) {
         })
     });
 
-    server.post('/json/cable/lend/delete',function(req, res) {
-        console.log("===== Route - Cable Lend Delete ===== ")
+    server.post('/json/lend/delete',function(req, res) {
+        console.log("===== Route - Delete Lend ===== ")
 
         let lend_id = req.body.lend_id;
 

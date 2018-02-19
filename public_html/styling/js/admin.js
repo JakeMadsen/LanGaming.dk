@@ -4,8 +4,8 @@
 
     console.log("Current URL filename - " + url)
 
-    if(url == "kabler"){
-        getCableTypes();
+    if(url == "lend"){
+        getLendTypes();
     }
     
 })();
@@ -59,81 +59,168 @@ function postStudentCheckIn(){
 
 
 /* Lend Out Scripts */
-function getCableTypes() {
+function getLendTypes() {
     console.log("Get Cable Types")
-    var placeholder_ = document.querySelector('#cable_lend_type');
+    var placeholder_read_lend   = document.querySelector('#cable_lend_type'),
+        placeholder_update_lend = document.querySelector('#edit_lend_type'),
+        placeholder_delete_lend = document.querySelector('#delete_lend_type');
 
 
-    fetch('http://localhost:3030/json/cable/types')
+    fetch('http://localhost:3030/json/lend/type/all')
         .then(function (data) 
         {
             return data.json();
         })
         .then(function (cable_types) {
-            cable_types.forEach(function (element) {
-                var option = document.createElement('OPTION');
-                    option.value = element.lend_out_option_id;
-
-                var optionName = document.createTextNode(element.lend_out_option_name);
-                    option.appendChild(optionName);
-
-                placeholder_.appendChild(option);
-            });
+            appendLendTypes(cable_types, placeholder_read_lend)
+            appendLendTypes(cable_types, placeholder_update_lend)
+            appendLendTypes(cable_types, placeholder_delete_lend)
         })
 }
-function postCableLend(){
+function postNewLend(){
     event.preventDefault();
     
     let student_name =  document.querySelector('#cable_lend_name').value,
         cable_id =      document.querySelector('#cable_lend_type').value;
 
-    let headers = new Headers();
-        headers.append('Content-Type', 'application/json');
-    
-    let init = {
-            method: 'POST',
-            headers: headers,
-            body: `{
-                "student":"${student_name}",
-                "cable":"${cable_id}"}`,
-            cache: 'no-cache',
-            mode: 'cors'
-        };
-    let request = new Request('http://localhost:3030/json/cable/lend', init);
-                
-    fetch(request)
-        .then(response => 
-            {
-                console.log("Succes",response)
-                window.location=('http://localhost:3030/cPanel/kabler');
-            })
-        .catch(err => 
-            {   
-                console.log("Fejlbesked",err, request)
-            });
+    if(student_name == "" || cable_id == null){
+        alert("Der er ikke udfyldt!")
+    }else{
+        let headers = new Headers();
+            headers.append('Content-Type', 'application/json');
+        
+        let init = {
+                method: 'POST',
+                headers: headers,
+                body: `{
+                    "student":"${student_name}",
+                    "cable":"${cable_id}"}`,
+                cache: 'no-cache',
+                mode: 'cors'
+            };
+        let request = new Request('http://localhost:3030/json/lend/new', init);
+                    
+        fetch(request)
+            .then(response => 
+                {
+                    console.log("Succes",response)
+                    window.location=('http://localhost:3030/cPanel/lend');
+                })
+            .catch(err => 
+                {   
+                    console.log("Fejlbesked",err, request)
+                });
+    }
 }
 function deleteLend(lend_id){
-    let headers = new Headers();
-        headers.append('Content-Type', 'application/json');
     
-    let init = {
-            method: 'POST',
-            headers: headers,
-            body: `{
-                "lend_id":"${lend_id}"}`,
-            cache: 'no-cache',
-            mode: 'cors'
-        };
-    let request = new Request('http://localhost:3030/json/cable/lend/delete', init);
-                
-    fetch(request)
-        .then(response => 
-            {
-                console.log("Succes",response)
-                window.location=('http://localhost:3030/cPanel/kabler');
-            })
-        .catch(err => 
-            {   
-                console.log("Fejlbesked",err, request)
-            });
+    var confirmDelete = confirm("Er du sikker?");
+    if (confirmDelete == true) {
+        let headers = new Headers();
+            headers.append('Content-Type', 'application/json');
+        
+        let init = {
+                method: 'POST',
+                headers: headers,
+                body: `{
+                    "lend_id":"${lend_id}"}`,
+                cache: 'no-cache',
+                mode: 'cors'
+            };
+        let request = new Request('http://localhost:3030/json/lend/delete', init);
+                    
+        fetch(request)
+            .then(response => 
+                {
+                    console.log("Succes",response)
+                    window.location=('http://localhost:3030/cPanel/lend');
+                })
+            .catch(err => 
+                {   
+                    console.log("Fejlbesked",err, request)
+                });
+    }else {
+        
+    }
+}
+function appendLendTypes(cable_types, placeholder){
+    cable_types.forEach(function (element) {
+        var option = document.createElement('OPTION');
+            option.value = element.lend_out_option_id;
+
+        var optionName = document.createTextNode(element.lend_out_option_name);
+            option.appendChild(optionName);
+
+        placeholder.appendChild(option);
+    });
+}
+function postNewLendType(){
+    event.preventDefault();
+    
+    let new_lend_type_name =  document.querySelector('#new_lend_name').value;
+
+    if(new_lend_type_name == ""){
+        alert("Der er ikke udfyldt")
+    }else{
+        let headers = new Headers();
+            headers.append('Content-Type', 'application/json');
+    
+        let init = {
+                method: 'POST',
+                headers: headers,
+                body: `{
+                    "new_lend_name":"${new_lend_type_name}"}`,
+                cache: 'no-cache',
+                mode: 'cors'
+            };
+        let request = new Request('http://localhost:3030/json/lend/type/new', init);
+                    
+        fetch(request)
+            .then(response => 
+                {
+                    console.log("Succes",response)
+                    window.location=('http://localhost:3030/cPanel/lend');
+                })
+            .catch(err => 
+                {   
+                    console.log("Fejlbesked",err, request)
+                });
+    }
+
+    
+}
+function editLendType(){
+    event.preventDefault();
+    
+    let lend_type_id        = document.querySelector('#edit_lend_type').value,
+        new_lend_type_name  =  document.querySelector('#edit_lend_name').value;
+
+    if(new_lend_type_name == ""){
+        alert("Der er ikke udfyldt" + new_lend_type_name)
+    }else{
+        let headers = new Headers();
+            headers.append('Content-Type', 'application/json');
+    
+        let init = {
+                method: 'PUT',
+                headers: headers,
+                body: `{
+                    "lend_type_id":"${lend_type_id}",
+                    "new_lend_name":"${new_lend_type_name}"}`,
+                cache: 'no-cache',
+                mode: 'cors'
+            };
+        let request = new Request('http://localhost:3030/json/lend/type/edit', init);
+                    
+        fetch(request)
+            .then(response => 
+                {
+                    console.log("Succes",response)
+                    window.location=('http://localhost:3030/cPanel/lend');
+                })
+            .catch(err => 
+                {   
+                    console.log("Fejlbesked",err, request)
+                });
+    }
 }

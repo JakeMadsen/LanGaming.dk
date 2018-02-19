@@ -23,14 +23,14 @@
                         </div>
                         <div class="container">
                             <div class="card-block">
-                                <form role="form" onsubmit="return postCableLend();">
+                                <form role="form" onsubmit="return postNewLend();">
                                     <label class="form-control-label" for="cable_lend_name">Navn på elev</label>
                                     <input type="text" class="form-control" id="cable_lend_name" name="Navn på elev">
                                 
                                     <label class="form-control-label" for="cable_lend_type">Kabel type</label>
                                     <select size="0" class="form-control" id="cable_lend_type"  name="Kabel type"></select>
 
-                                    <button class="btn btn-lg btn-primary btn-block" type="button" onclick="return postCableLend();">Tilføj Udlån</button>
+                                    <button class="btn btn-lg btn-primary btn-block" type="button" onclick="return postNewLend();">Tilføj Udlån</button>
                                 </form>
                             </div>
                         </div>
@@ -44,11 +44,11 @@
                         </div>
                         <div class="container">
                             <div class="card-block">
-                                <form role="form" onsubmit="return postLendType();">
+                                <form role="form" onsubmit="return postNewLendType();">
                                     <label class="form-control-label" for="new_lend_name">Navn på type</label>
                                     <input type="text" class="form-control" id="new_lend_name" name="Navn på type">
                                 
-                                    <button class="btn btn-lg btn-primary btn-block" type="button" onclick="return postLendType();">Tilføj Type</button>
+                                    <button class="btn btn-lg btn-primary btn-block" type="button" onclick="return postNewLendType();">Tilføj Type</button>
                                 </form>
                             </div>
                         </div>
@@ -87,7 +87,7 @@
                                     <label class="form-control-label" for="delete_lend_type">Kabel type</label>
                                     <select size="0" class="form-control" id="delete_lend_type" name="Slet type"></select>
                                 
-                                    <button class="btn btn-lg btn-primary btn-block" type="button" onclick="return deleteLendType();">Slet Type</button>
+                                    <button class="btn btn-lg btn-danger btn-block" type="button" onclick="return deleteLendType();">Slet Type</button>
                                 </form>
                             </div>
                         </div>
@@ -118,7 +118,7 @@
                                             <div class="col-md-3"><%= element.lend_out_option_name %></div>
                                             <div class="col-md-3"><%= element.lend_out_time %></div>
                                             <div class="col-md-1">
-                                                <button class="btn btn-primary" type="button" onclick='return deleteLend("<%= element.lend_out_id %>");'>Slet</button>
+                                                <button class="btn btn-danger" type="button" onclick='return deleteLend("<%= element.lend_out_id %>");'>Slet</button>
                                                 
                                             </div>
                                         </div>
