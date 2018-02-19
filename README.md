@@ -4,9 +4,11 @@ Administrations side til LanGaming.dk
 
 ## Administrations Panel
 
+#### Event panel
+
 #### Udlånings panel
 
-Funktioner
+Funktioner:
   - Se alle udlån
   - Lav nyt udlån
   - Slet udlån
