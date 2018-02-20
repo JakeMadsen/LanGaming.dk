@@ -1,9 +1,9 @@
 <header>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark static-top">
         <div class="container">
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand" href="/">
                 <!-- <img src="resources/hi_fi_Logo.png" width="60" height="40" alt="" /> -->
-                <h1>ltu lan</h1>
+                <h1>Langaming</h1>
             </a>
     
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault"aria-expanded="false" aria-label="Toggle navigation">
@@ -13,18 +13,44 @@
             <div class="collapse navbar-collapse" id="navbarsExampleDefault">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="index.html">Forside <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="#">Forside</a>
                     </li>
     
                     <li class="nav-item">
-                        <a class="nav-link" href="produkter.html">Produkter</a>
+                        <a class="nav-link" href="#">Events</a>
                     </li>
     
                     <li class="nav-item">
-                        <a class="nav-link" href="kontakt.html">Kontakt</a>
+                        <a class="nav-link" href="#">Forum</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Om Langaming</a>
                     </li>
                 </ul>
-    
+                    
+                <ul class="nav navbar-nav navbar-right">
+                    <% if(false){ %>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Profil
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="#">Min Profil</a>
+                                <a class="dropdown-item" href="#">Notifikationer</a>
+                                <a class="dropdown-item" href="#">Beskeder</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">Log ud</a>
+                            </div>
+                        </li>
+                        
+                    <% } else{ %>  
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" role="button" data-toggle="modal" data-target="#login-modal">Opret / Tilmeld</a>
+                        </li>
+                        <% include .././partials/login_formular %>
+                    <% } %>
+                </ul>  
             </div>
         </div>
     </nav>
