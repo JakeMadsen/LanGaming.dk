@@ -1,7 +1,7 @@
-const   express = require('express'),
-        path = require('path')
-        server = express(),
-        bodyParser = require("body-parser");
+const   express     = require('express'),
+        path        = require('path')
+        server      = express(),
+        bodyParser  = require("body-parser");
 
 var url = "http://localhost:",
     port = 3030,

@@ -24,8 +24,18 @@
                         <a class="nav-link" href="#">Forum</a>
                     </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Om Langaming</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Om Langaming
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <h4 class="dropdown-header">Skolerne</h4>
+                            <a class="dropdown-item" href="/lyngby">Lyngby US</a>
+                            <a class="dropdown-item" href="/herlev">Herlev US</a>
+                            <div class="dropdown-divider"></div>
+                            <h4 class="dropdown-header">Andet</h4>                            
+                            <a class="dropdown-item" href="#">?????</a>
+                        </div>
                     </li>
                 </ul>
                     
@@ -46,7 +56,7 @@
                         
                     <% } else{ %>  
                         <li class="nav-item">
-                            <a class="nav-link" href="#" role="button" data-toggle="modal" data-target="#login-modal">Opret / Tilmeld</a>
+                            <a class="nav-link" href="#" role="button" data-toggle="modal" data-target="#login-modal">Opret / Login</a>
                         </li>
                         <% include .././partials/login_formular %>
                     <% } %>
