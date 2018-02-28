@@ -1,6 +1,7 @@
 module.exports = (server) => {
     /* PUBLIC ROUTES */
     require("./home")(server);
+    require("./public_routes/schools")(server)
     
 
     /* ADMIN CPANEL ROUTES */
