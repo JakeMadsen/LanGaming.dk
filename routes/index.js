@@ -1,13 +1,13 @@
 module.exports = (server) => {
     /* PUBLIC ROUTES */
-    require("./home")(server);
+    require("./public_routes/home")(server);
     require("./public_routes/schools")(server)
     
 
     /* ADMIN CPANEL ROUTES */
-    require("./admin")(server);
-    require("./lend")(server);
-    require("./events")(server);
-    require("./forum")(server);
-    require("./check")(server);
+    require("./admin_routes/admin")(server);
+    require("./admin_routes/lend")(server);
+    require("./admin_routes/events")(server);
+    require("./admin_routes/forum")(server);
+    require("./admin_routes/check")(server);
 }

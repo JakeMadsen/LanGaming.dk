@@ -1,9 +1,9 @@
-const db_connection = require('../config/sql').connect();
+const db_connection = require('../../config/sql').connect();
 const moment = require('moment');
 
 module.exports = function (server) {
     
-    server.get('/cPanel/events', function(req, res) {
+    server.get('/cPanel/forum', function(req, res) {
         let sql_get_lend = `SELECT lend_out_id, lend_out_student_name, lend_out_time, lend_out_option_name
                                 FROM
                                 (   tb_lend_out INNER JOIN tb_lend_out_options 
@@ -18,9 +18,9 @@ module.exports = function (server) {
             });
 
             if(err){
-                res.render('pages/cPanel/pages_admin/events')
+                res.render('pages/cPanel/pages_admin/forum')
             }else {
-                res.render('pages/cPanel/pages_admin/events', {
+                res.render('pages/cPanel/pages_admin/forum', {
                     lend_out: data
                 });
             }

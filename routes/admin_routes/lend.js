@@ -1,4 +1,4 @@
-const db_connection = require('../config/sql').connect();
+const db_connection = require('../../config/sql').connect();
 const moment = require('moment');
 
 module.exports = function (server) {
