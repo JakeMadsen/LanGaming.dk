@@ -1,0 +1,33 @@
+<div id="mainArticleContainer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <% school_data.forEach(function(element){ %>
+                    <div class="card">
+                        <div class="card-header">
+                            <%= element.school_name %>
+                        </div>
+
+                        <div class="container">
+                            <div class="card-block">
+                                <div class="school_data" style="float:left">
+                                    <img src="<%= element.school_bannerImage %>" alt="Billede af skolen">
+
+                                    <p><%= element.school_description %></p>
+                                    <p>Link til skolens egen hjemmeside: <a href="<%= element.school_link %>"><%= element.school_name %></a></p>
+                                </div>
+
+                                <div class="school_google_maps" style="float:right">
+                                    <iframe width="200" height="200" frameborder="0" style="border:0"src='https://www.google.com/maps/embed/v1/place?q=<%= element.school_adress %>,+<%= element.school_postCode %>,<%= element.school_city  %>&key=AIzaSyBwkrviqRKlQnEUJ1DbcDlCezyLJ7HRwM8' allowfullscreen></iframe>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-footer footer">
+                        </div>
+                    </div>
+                    <% }); %>
+                </div>
+            </div>
+        </div>
+    </div>

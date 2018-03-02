@@ -1,6 +1,7 @@
 module.exports = (server) => {
     /* PUBLIC ROUTES */
     require("./public_routes/home")(server);
+    require("./public_routes/events")(server);
     require("./public_routes/schools")(server)
     
 

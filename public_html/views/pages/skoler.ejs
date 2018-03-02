@@ -8,60 +8,13 @@
     <!-- Header Navbar End -->
 
     <!-- Content Area Start -->
-    <div id="mainArticleContainer">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="card">
+    <% if(all_schools == true){ %>
+        <% include .././partials/school_all %>
+        
+    <% } else if (all_schools == false){ %>  
 
-                        <div class="card-header">
-                            Forside
-                        </div>
-
-                        <div class="container">
-                            <div class="card-block">
-
-                                <div class="row">
-
-                                    <div class="col-md-8 pushthirty pushthirtylower">
-                                        <div class="card">
-                                            <div class="card-header">
-                                            </div>
-                                            <div class="container">
-                                                <div class="card-block">
-                                                </div>
-                                            </div>
-                                            <div class="card-footer footer">
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-4 pushthirty pushthirtylower">
-                                        <div class="card">
-                                            <div class="card-header">
-                                                Kommende lan events
-                                            </div>
-                                            <div class="container">
-                                                <div class="card-block">
-                                                </div>
-                                            </div>
-                                            <div class="card-footer footer">
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card-footer footer">
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+        <% include .././partials/school_single %>
+    <% } %>
     <!-- Content Area End -->
 
     <!-- Footer Start-->
