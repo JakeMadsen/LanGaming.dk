@@ -2,7 +2,7 @@ module.exports = function (server) {
     
     server.get('/events', 
         function(req, res) {
-            res.render('pages/events');
+            res.render('public assets/pages/events');
         }
     );
 }

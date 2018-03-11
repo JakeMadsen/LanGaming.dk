@@ -1,5 +1,7 @@
-const db_connection = require('../../config/sql').connect();
-const moment = require('moment');
+const   moment = require('moment'),
+        fetch = require('node-fetch'),
+        host_settings = require('../../helpers/tools/oop_host')
+var host = new host_settings;
 
 module.exports = function (server) {
     

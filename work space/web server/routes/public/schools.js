@@ -17,9 +17,6 @@ module.exports = function (server) {
             return data.json()
         })
         .then(function(school){
-            // console.log(school)
-            // console.log(school.data_error)
-            // console.log(school.all_schools)
             if (school.data_error == true) {
                 console.log("Something went wrong.")
                 res.render('public assets/pages/skoler', {
@@ -28,7 +25,6 @@ module.exports = function (server) {
             }
             else if (school.data_error == false){
                 console.log("Data found on school:")
-                console.log(school)
                 res.render('public assets/pages/skoler', {
                     all_schools: school.all_schools,
                     school_data: school.school_data
@@ -50,9 +46,7 @@ module.exports = function (server) {
                 return data.json()
             })
             .then(function(school){
-                // console.log(school)
-                // console.log(school.data_error)
-                // console.log(school.all_schools)
+
                 if (school.data_error == true) {
                     console.log("Something went wrong.")
                     res.render('public assets/pages/skoler', {
@@ -61,7 +55,6 @@ module.exports = function (server) {
                 }
                 else if (school.data_error == false){
                     console.log("Data found on schools:")
-                    // console.log(school)
                     res.render('public assets/pages/skoler', {
                         all_schools: school.all_schools,
                         school_data: school.school_data
