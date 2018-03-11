@@ -1,0 +1,23 @@
+{
+  "name": "web_server",
+  "version": "0.1.0",
+  "description": "langaming.dk web server. Handles all external communication with clients.",
+  "main": "server.js",
+  "dependencies": {
+    "ejs": "^2.5.7",
+    "express": "^4.16.2",
+    "ip": "^1.1.5",
+    "moment": "^2.21.0",
+    "node-fetch": "^2.1.1",
+    "socket.io": "^2.0.4"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "author": "Jake Madsen",
+  "license": "MIT"
+}

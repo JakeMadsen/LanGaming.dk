@@ -1,0 +1,23 @@
+{
+  "name": "api_server",
+  "version": "0.1.0",
+  "description": "langaming.dk api server. Made for handling all data distrubution between thee web_server and desktop app made for langaming.dk.",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.6.1",
+    "ip": "^1.1.5",
+    "moment": "^2.20.1",
+    "mysql2": "^1.5.2",
+    "node-ip": "^0.1.2",
+    "socket.io": "^2.0.4"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "author": "Jake Madsen",
+  "license": "MIT"
+}

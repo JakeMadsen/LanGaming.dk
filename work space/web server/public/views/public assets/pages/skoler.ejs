@@ -1,0 +1,32 @@
+<!-- Include head.ejs -->
+<% include ../partials/head %>
+
+<body>
+    <!-- Header Navbar Start -->
+        <!-- Include header.ejs -->
+        <% include ../partials/header %>
+    <!-- Header Navbar End -->
+
+    <!-- Content Area Start -->
+    
+    <% if(all_schools == true){ %>
+        <% include ../partials/school_all %>
+        
+    <% } else if (all_schools == false){ %>  
+        <% include ../partials/school_single %>
+    <% } %>
+    <!-- Content Area End -->
+
+    <!-- Footer Start-->
+        <!-- Include footer.ejs -->
+        <% include ../partials/footer %>
+    <!-- Footer End-->
+</body>
+
+<!--include script.ejs-->
+<% include ../partials/scripts %>
+
+
+
+</html>
+
