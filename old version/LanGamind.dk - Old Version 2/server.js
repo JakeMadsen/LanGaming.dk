@@ -2,11 +2,13 @@ const   express     = require('express'),
         path        = require('path')
         server      = express(),
         bodyParser  = require("body-parser"),
-        ip          = require('ip');
+        ip          = require('ip'),
+        cors        = require('cors')
 
 var url = ip.address(),
     port = 3200,
     name = "ltu_lan";
+server.use(cors())
 
 server.set(
     'view engine', 
@@ -25,5 +27,5 @@ require('./routes/index')(server);
 
 
 server.listen(port, function () {
-    console.log('Server listening at: ' + url+port, '\n' + 'Server name: ' + name);
+    console.log('Server listening at: ' + url+':'+port, '\n' + 'Server name: ' + name);
 });

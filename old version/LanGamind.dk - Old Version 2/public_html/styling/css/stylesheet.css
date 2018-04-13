@@ -1,0 +1,38 @@
+* {
+
+    font-family: Verdana, Geneva, sans-serif;
+
+}
+body {
+
+    background-color: rgb(227, 227, 227)
+
+}
+ #mainArticleContainer {
+
+    margin-top: 30px;
+}
+ .pushthirty {
+     margin-top:30px;
+ }
+ .pushthirtylower {
+     margin-bottom: 30px;
+ }
+
+ .containerColour {
+     background-color:rgba(207, 207, 207, 0.47);
+     width:auto;
+ }
+ 
+.products {
+    border:groove;
+    margin-top:20px;
+}
+
+.form_spacing input{
+    margin-top: 10px;
+}
+
+.form_spacing button{
+    margin-top: 10px;
+}

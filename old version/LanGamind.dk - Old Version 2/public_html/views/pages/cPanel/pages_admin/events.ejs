@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Include head.ejs -->
+    <% include .././partials_admin/head %>
+<title>Ltu Lan - Admin</title>
+</head>
+
+<body>
+    <!-- Header Navbar Start -->
+        <!-- Include header.ejs -->
+        <% include .././partials_admin/header %>
+    <!-- Header Navbar End -->
+
+    <!-- Content Area Start -->
+    <div id="mainArticleContainer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-header">
+                            Tilføj Lan Event
+                        </div>
+                        <div class="container">
+                            <div class="card-block">
+                                <form role="form" onsubmit="return postNewEvent();">
+                                    <label class="form-control-label" for="new_event_name">Navn på event</label>
+                                    <input type="text" class="form-control" id="new_event_name" name="Navn på event">
+                                
+                                    <label class="form-control-label" for="new_event_location">Vælg lokation</label>
+                                    <select size="0" class="form-control" id="new_event_location"  name="Event lokation"></select>
+
+                                    <label class="form-control-label" for="new_event_text">Skriv Beskrivelse</label>
+                                    <input type="text" class="form-control" id="new_event_text" name="Event beskrivelse">
+
+                                    <label class="form-control-label" for="new_event_start">Start dato</label>
+                                    <input type="datetime-local" class="form-control" id="new_event_start" name="Event start dato">
+
+                                    <label class="form-control-label" for="new_event_end">Slut dato</label>
+                                    <input type="datetime-local" class="form-control" id="new_event_end" name="Event slut dato">
+                                    
+                                    <button class="btn btn-lg btn-primary btn-block" type="button" onclick="return postNewEvent();">Tilføj event</button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-header">
+                            Kommende Lan Events
+                        </div>
+                        <div class="container">
+                            <div class="card-block">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-4">Navn</div>
+                                        <div class="col-md-3">Lånt</div>
+                                        <div class="col-md-3">Tid</div>
+                                        <div class="col-md-1">Slet</div>
+                                    </div>
+                                    <% lend_out.forEach(function(element){ %>
+
+                                        <div class="dropdown-divider"></div>
+                                        <div id="content" class="row">
+                                            <div class="col-md-4"><%= element.lend_out_student_name %></div>
+                                            <div class="col-md-3"><%= element.lend_out_option_name %></div>
+                                            <div class="col-md-3"><%= element.lend_out_time %></div>
+                                            <div class="col-md-1">
+                                                <button class="btn btn-primary" type="button" onclick='return deleteLend("<%= element.lend_out_id %>");'>Slet</button>
+                                                
+                                            </div>
+                                        </div>
+                                    <% }); %>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer footer">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Content Area End -->
+
+    <!-- Footer Start-->
+        <!-- Include footer.ejs -->
+        <% include .././partials_admin/footer %>
+    <!-- Footer End-->
+</body>
+
+<!--include script.ejs-->
+<% include .././partials_admin/scripts %>
+
+
+
+</html>
+

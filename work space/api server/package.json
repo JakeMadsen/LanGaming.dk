@@ -4,15 +4,16 @@
   "description": "langaming.dk api server. Made for handling all data distrubution between thee web_server and desktop app made for langaming.dk.",
   "main": "server.js",
   "dependencies": {
-    "express": "^4.6.1",
+    "ejs": "^2.5.8",
+    "express": "^4.16.3",
     "ip": "^1.1.5",
-    "moment": "^2.20.1",
-    "mysql2": "^1.5.2",
+    "moment": "^2.22.0",
+    "mysql2": "^1.5.3",
     "node-ip": "^0.1.2",
-    "socket.io": "^2.0.4"
+    "socket.io": "^2.1.0"
   },
   "devDependencies": {
-    "nodemon": "^1.17.1"
+    "nodemon": "^1.17.3"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

@@ -17,7 +17,7 @@ server.set(
     'ejs')
 server.set('views', path.join(__dirname, '/public/views'));
 
-server.use(express.static('public'));
+// server.use(express.static(__dirname, 'public'));
 server.use('/static/', express.static('public'));
 server.use(express.static(path.join(__dirname + 'public')));
 

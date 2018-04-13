@@ -3,7 +3,7 @@ const   express     = require('express'),
         path        = require('path'),
         server      = express(),
         bodyParser  = require("body-parser"),
-        ip          = require('ip');
+        ip          = require('ip')
 
 
 /* Usefull variables for the API server. */
@@ -16,10 +16,24 @@ var server_ip   = ip.address(),
 server.use(bodyParser.urlencoded({ extended: true }));
 server.use(bodyParser.json());
 
+/* Setting up Index functionality. */
+server.set(
+    'view engine', 
+    'ejs')
+server.set('views', path.join(__dirname, '/public/views'));
+
+server.use(express.static('public'));
+server.use('/static/', express.static('public'));
+server.use(express.static(path.join(__dirname + 'public')));
+
+server.use(bodyParser.urlencoded({ extended: true }));
+server.use(bodyParser.json());
+
 
 /* Requires all private and public API routes. */
 require('./routes/route_index_public')(server);
 require('./routes/route_index_private')(server);
+require('./routes/index')(server)
 
 
 /* Executes listening function for API server. */
