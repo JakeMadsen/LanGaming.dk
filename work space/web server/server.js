@@ -7,7 +7,7 @@ const   express     = require('express'),
 
 /* Usefull variables for the WEB server. */
 var server_ip   = ip.address(),
-    server_port = 3000,
+    server_port = 3200,
     server_name = "langaming.dk - WEB server";
 
 

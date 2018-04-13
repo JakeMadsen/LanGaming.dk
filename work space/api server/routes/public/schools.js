@@ -1,4 +1,4 @@
-const db_connection = require('../../config/db/db_config').connect();
+const db_connection = require('../../config/db/db_config').connect_local()
 const moment = require('moment');
 var all_schools; /* States wether or not all schools has been requested. */
 
@@ -10,22 +10,23 @@ module.exports = function (server) {
         let sql_get_school_data = `SELECT * FROM tb_schools`;
         all_schools = true;
             
-        db_connection.query(sql_get_school_data, function (err, data) {
-            console.log("Data found on schools:")
-            console.log(data)
-            if (err) {
-                res.send({
-                    data_error: true
-                })
-            }
-            else {
-                res.send({
-                    data_error: false,
-                    all_schools: all_schools,
-                    school_data: data
-                })
-            }
-        })
+        db_connection.query(sql_get_school_data, 
+            function (err, data) {
+                console.log("Data found on schools:")
+                console.log(data)
+                if (err) {
+                    res.send({
+                        data_error: true
+                    })
+                }
+                else {
+                    res.send({
+                        data_error: false,
+                        all_schools: all_schools,
+                        school_data: data
+                    })
+                }
+            })
         }
     );
 
@@ -55,7 +56,6 @@ module.exports = function (server) {
                     })
                 }
             })
-
         }
     );
 }

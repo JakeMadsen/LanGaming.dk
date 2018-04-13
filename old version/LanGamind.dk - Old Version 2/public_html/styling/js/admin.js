@@ -65,8 +65,6 @@ function postStudentCheckIn(){
                 });
     }
 }
-
-
 /* Lend Out Scripts */
 function getLendTypes() {
     console.log("Get Cable Types")
@@ -234,7 +232,6 @@ function editLendType(){
                 });
     }
 }
-
 function deleteLendType(){
     let confirmDelete = confirm("Er du sikker?"),
         lend_type_id = document.querySelector('#delete_lend_type').value;
@@ -274,7 +271,6 @@ function deleteLendType(){
         });        
     }   
 }
-
 function checkIfLendTypeIsInUse(lend_type_id, deleteFunc ){
     let check = false;
     fetch(host + port + '/json/lend/get')

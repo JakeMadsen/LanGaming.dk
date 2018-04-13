@@ -8,7 +8,7 @@ const   express     = require('express'),
 
 /* Usefull variables for the API server. */
 var server_ip   = ip.address(),
-    server_port = 3001,
+    server_port = 3201,
     server_name = "langaming.dk - API server";
 
 
